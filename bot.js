@@ -27,6 +27,8 @@ autorun: true
 
 });
 
+logger.info(bot.token.length)
+
 bot.on('ready', function (evt) {
 
 logger.info('Connected');
