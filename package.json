@@ -1,0 +1,26 @@
+{
+
+    "name": "Shaans Daily Motivation",
+
+    "version": "1.0.0",
+
+    "description": "DO IT! BELIEVE IN YOURSELF!",
+
+    "main": "bot.js",
+
+    "author": "Quinto Bean",
+
+    "dependencies": {
+
+        "discord": "^0.8.2",
+
+        "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+
+        "discord.js": "^13.6.0",
+
+        "winston": "^3.7.2"
+
+    }
+
+}
+
