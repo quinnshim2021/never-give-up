@@ -45,3 +45,7 @@ bot.on('message', function(user, userID, channelID, message, evt) {
         });
     }
   });
+
+
+  // keep token in env variable
+  // once i do that host on heroku (app and repo already made, just connect them and make sure token works)
