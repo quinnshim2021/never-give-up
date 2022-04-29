@@ -2,7 +2,7 @@ var Discord = require('discord.io');
 
 var logger = require('winston');
 
-var auth = require('./auth.json');
+var auth = require('./auth.js');
 
 // Configure logger settings
 
@@ -19,7 +19,7 @@ logger.level = 'debug';
 
 var bot = new Discord.Client({
 
-token: auth.token,
+token: auth.config.token,
 
 autorun: true
 
@@ -35,7 +35,7 @@ logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
 bot.on('message', function(user, userID, channelID, message, evt) {
-      if (channelID === '963810107974647808' && userID !== '969618394519326753' && message.toLowerCase().includes('never give up')) {
+      if ((channelID === '963810107974647808' || channelID === '969622548432175164') && userID !== '969618394519326753' && message.toLowerCase().includes('never give up')) {
         bot.sendMessage({
     
             to: channelID,
@@ -47,5 +47,3 @@ bot.on('message', function(user, userID, channelID, message, evt) {
   });
 
 
-  // keep token in env variable
-  // once i do that host on heroku (app and repo already made, just connect them and make sure token works)
