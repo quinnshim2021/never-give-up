@@ -27,21 +27,19 @@ autorun: true
 
 });
 
-logger.info(bot.token.length)
+bot.on('ready', async (evt) => {
 
-bot.on('ready', function (evt) {
+  logger.info('Connected');
 
-logger.info('Connected');
+  logger.info('Logged in as: ');
 
-logger.info('Logged in as: ');
-
-logger.info(bot.username + ' - (' + bot.id + ')');
+  logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
 console.log('running')
 logger.info('running')
 
-bot.on('message', function(user, userID, channelID, message, evt) {
+bot.on('message', async (user, userID, channelID, message, evt) => {
       console.log('got message')
       console.log(message)
       if ((channelID === '963810107974647808' || channelID === '969622548432175164') && userID !== '969618394519326753' && message.toLowerCase().includes('never give up')) {
