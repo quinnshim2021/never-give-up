@@ -1,57 +1,22 @@
-var Discord = require('discord.io');
-
-var logger = require('winston');
-
 var auth = require('./auth.js');
+const { Client, Intents } = require('discord.js'); //import discord.js
 
-// Configure logger settings
+const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
-console.log('started')
-
-logger.remove(logger.transports.Console);
-
-logger.add(new logger.transports.Console, {
-
-colorize: true
+bot.on('ready', () => {
+  console.log(`Logged in as ${bot.user.tag}!`);
 });
 
-logger.level = 'debug';
+bot.on('message', msg => {
+  if ((msg.channelId ==='969622548432175164' || msg.channelId === '963810107974647808') && msg.author.id !== '969618394519326753' && msg.content.toLowerCase().includes('never give up')){
+    msg.reply('NEVER GIVE UP! BUY A FUCKING BISON! SCALE THE SHIT OUT OF IT UNTIL YOU GET 10 WINS! TATAKAE!\nhttps://www.youtube.com/watch?v=KxGRhd_iWuE')
+      .then(console.log('successfully sent message'))
+      .catch(console.log('error sending message'))
+  }
 
-// Initialize Discord Bot
 
-var bot = new Discord.Client({
+})
 
-token: auth.config.token,
-
-autorun: true
-
-});
-
-bot.on('ready', async (evt) => {
-
-  logger.info('Connected');
-
-  logger.info('Logged in as: ');
-
-  logger.info(bot.username + ' - (' + bot.id + ')');
-});
-
-console.log('running')
-logger.info('running')
-
-bot.on('message', async (user, userID, channelID, message, evt) => {
-      console.log('got message')
-      console.log(message)
-      if ((channelID === '963810107974647808' || channelID === '969622548432175164') && userID !== '969618394519326753' && message.toLowerCase().includes('never give up')) {
-        console.log('going to send message')
-        bot.sendMessage({
-    
-            to: channelID,
-
-            message: 'Never give up! Get 10 wins! Get a fucking bison! Believe in the heart of the cards! \nhttps://www.youtube.com/watch?v=tYzMYcUty6s'
-
-        });
-    }
-  });
-
+//make sure this line is the last line
+bot.login(auth.config.token);
 
