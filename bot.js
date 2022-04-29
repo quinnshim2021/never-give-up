@@ -6,6 +6,8 @@ var auth = require('./auth.js');
 
 // Configure logger settings
 
+console.log('started')
+
 logger.remove(logger.transports.Console);
 
 logger.add(new logger.transports.Console, {
@@ -33,6 +35,9 @@ logger.info('Logged in as: ');
 
 logger.info(bot.username + ' - (' + bot.id + ')');
 });
+
+console.log('running')
+logger.info('running')
 
 bot.on('message', function(user, userID, channelID, message, evt) {
       if ((channelID === '963810107974647808' || channelID === '969622548432175164') && userID !== '969618394519326753' && message.toLowerCase().includes('never give up')) {
